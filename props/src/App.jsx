@@ -9,7 +9,15 @@ const App = () => {
   const [won, setwon] = useState(false);
 
   const gridchange = (e) => {
-    setGrid(e.target.value);
+    const size = parseInt(e.target.value);
+    if (size <= 10 && size >= 2) setGrid(size);
+  };
+
+  const gen = () => {
+    const total = grid * grid;
+    const pairs = Math.floor(card / 2);
+    const num = [...Array(pairs).keys()].map((n) => n++);
+    const suffle = [...num, ...num].sort(() => Math.random() - 0.5);
   };
 
   return (
@@ -28,6 +36,10 @@ const App = () => {
       </div>
 
       {/* Game */}
+      <div>
+        <div></div>
+        <div></div>
+      </div>
 
       {/* WIn pop up */}
 
